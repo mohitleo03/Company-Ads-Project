@@ -51,7 +51,7 @@ export default function AdsCard(props) {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button onClick={()=>{openInNewTab(companyUrl)}}></Button>
+        <Button onClick={()=>{openInNewTab(companyUrl)}}>Learn More</Button>
       </CardActions>
     </Card>
   );
