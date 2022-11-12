@@ -56,23 +56,10 @@ module.exports = {
         },
       },
       {
-        $project: {
-          _id: 1,
-          companyId: 1,
-          companyUrl: "$company.url",
-          companyName: "$company.name",
-          primaryText: 1,
-          headline: 1,
-          description: 1,
-          CTA: 1,
-          imageUrl: 1,
-        },
-      },
-      {
         $match: {
           $or: [
             {
-              companyName: { $regex: serach_string, $options: "$i" },
+              "company.name": { $regex: serach_string, $options: "$i" },
             },
             {
               primaryText: { $regex: serach_string, $options: "$i" },
@@ -85,28 +72,19 @@ module.exports = {
             },
           ],
         },
-        // $or:[
-        //     {
-        //         $match:{
-        //             companyName:{$regex:serach_string,$options:"$i"}
-        //         }
-        //     },
-        //     {
-        //         $match:{
-        //             primaryText:{$regex:serach_string,$options:"$i"}
-        //         }
-        //     },
-        //     {
-        //         $match:{
-        //             headline:{$regex:serach_string,$options:"$i"}
-        //         }
-        //     },
-        //     {
-        //         $match:{
-        //             description:{$regex:serach_string,$options:"$i"}
-        //         }
-        //     }
-        // ]
+      },
+      {
+        $project: {
+          _id: 1,
+          companyId: 1,
+          companyUrl: "$company.url",
+          companyName: "$company.name",
+          primaryText: 1,
+          headline: 1,
+          description: 1,
+          CTA: 1,
+          imageUrl: 1,
+        },
       },
     ]);
     return ads;
